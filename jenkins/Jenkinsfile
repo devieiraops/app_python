@@ -26,18 +26,18 @@ pipeline {
                 }
             }
         }
-        stage ('Delivery'){
+        stage ('Delivery') {
             agent {
-                 docker {
+                docker {
                     image 'cdrx/pyinstaller-linux:python2' 
                 }
             }
             steps {
-                 sh 'pyinstaller --onefile sources/add2vals.py' //Criando um artefato (componente implementavél do software)
+                sh 'pyinstaller --onefile sources/add2vals.py' //Criando um artefato (componente implementavél do software)
             }
             post {
                 success { // enviando artefato para workspace
-                     archiveArtifacts 'dist/add2vals'
+                    archiveArtifacts 'dist/add2vals'
                 }
             }
         } 
